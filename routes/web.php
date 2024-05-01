@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ProductListController;
 use App\Http\Controllers\AdminController;
 use Illuminate\Support\Facades\Route;
 
@@ -26,6 +27,11 @@ Route::get('/dashboard', function () {
 // Admin
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/admin/logout', [AdminController::class, 'destroy'])->name('admin.logout');
+});
+
+// ProductList
+Route::middleware(['auth', 'verified'])->group(function () {
+    Route::get('/ProductList', [ProductListController::class, 'index'])->name('productList');
 });
 
 Route::middleware('auth')->group(function () {

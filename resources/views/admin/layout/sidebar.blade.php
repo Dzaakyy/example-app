@@ -21,7 +21,7 @@
                                                         <a class="nav-link" href="{{ route('dashboard') }}">E Commerce Dashboard</a>
                                                     </li>
                                                     <li class="nav-item">
-                                                        <a class="nav-link" href="ecommerce-product.html">Product List</a>
+                                                        <a class="nav-link" href="{{ route('productList')}}">Product List</a>
                                                     </li>
                                                     <li class="nav-item">
                                                         <a class="nav-link" href="ecommerce-product-single.html">Product Single</a>
