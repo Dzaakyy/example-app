@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\AdminController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,12 +16,17 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('auth.login');
 });
 
 Route::get('/dashboard', function () {
-    return view('dashboard');
+    return view('admin.content.dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
+
+// Admin
+Route::middleware(['auth', 'verified'])->group(function () {
+    Route::get('/admin/logout', [AdminController::class, 'destroy'])->name('admin.logout');
+});
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
